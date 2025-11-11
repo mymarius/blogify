@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogify</title>
+    <link rel="stylesheet" href="styles.css"> 
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo blogify-logo">
+    <span class="blogify-icon"></span>
+    Blogify
+</a>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#articles">Articles</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+                <div id="authButtons" class="user-menu">
+                    <button class="btn btn-outline" onclick="openLoginModal()">Login</button>
+                    <button class="btn btn-primary" onclick="openRegisterModal()">Sign Up</button>
+                </div>
+                <div id="userMenu" class="user-menu hidden">
+                    <a href="dashboard.html" class="btn btn-outline">📊 Dashboard</a>
+                    <a href="new_post.html" class="btn btn-primary">✏️ New Post</a>
+                    <div class="user-avatar" id="userAvatar"></div>
+                    <button class="btn btn-outline" onclick="logout()">Logout</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="container">
+                <h1>Ideas & Stories</h1>
+                <p>Thoughts on technology, design, and creativity. Join the community and share yours!</p>
+            </div>
+            <div class="social-proof">
+                <p><strong>Over 1,000</strong> users and a growing community!</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+  <div class="container" id="articles">
+    <div class="categories">
+      <button class="category-btn active" data-category="all">🌟 All</button>
+
+      <!-- 🌐 TECHNOLOGY -->
+      <button class="category-btn" data-category="technology">💻 Technology</button>
+      <button class="category-btn" data-category="ai">🤖 Artificial Intelligence</button>
+      <button class="category-btn" data-category="software">⚡ Software</button>
+      <button class="category-btn" data-category="hardware">🖥️ Hardware</button>
+      <button class="category-btn" data-category="coding">💾 Coding</button>
+      <button class="category-btn" data-category="cybersecurity">🛡️ Cybersecurity</button>
+      <button class="category-btn" data-category="robotics">🦾 Robotics</button>
+      <button class="category-btn" data-category="data">📊 Data Science</button>
+      <button class="category-btn" data-category="cloud">☁️ Cloud</button>
+      <button class="category-btn" data-category="blockchain">⛓️ Blockchain</button>
+      <button class="category-btn" data-category="crypto">💎 Crypto</button>
+      <button class="category-btn" data-category="innovation">💡 Innovation</button>
+      <button class="category-btn" data-category="futuretech">🔮 Future Tech</button>
+
+      <!-- 🎨 DESIGN & CREATIVE -->
+      <button class="category-btn" data-category="design">🎨 Design</button>
+      <button class="category-btn" data-category="uiux">🧩 UI / UX</button>
+      <button class="category-btn" data-category="art">🖌️ Art</button>
+      <button class="category-btn" data-category="creativity">✨ Creativity</button>
+      <button class="category-btn" data-category="animation">🎞️ Animation</button>
+      <button class="category-btn" data-category="illustration">🖋️ Illustration</button>
+      <button class="category-btn" data-category="photography">📸 Photography</button>
+      <button class="category-btn" data-category="architecture">🏛️ Architecture</button>
+      <button class="category-btn" data-category="fashion">👗 Fashion</button>
+      <button class="category-btn" data-category="interior">🪑 Interior Design</button>
+
+      <!-- 💼 BUSINESS -->
+      <button class="category-btn" data-category="business">💼 Business</button>
+      <button class="category-btn" data-category="startup">🚀 Startups</button>
+      <button class="category-btn" data-category="finance">💰 Finance</button>
+      <button class="category-btn" data-category="economy">📈 Economy</button>
+      <button class="category-btn" data-category="marketing">📣 Marketing</button>
+      <button class="category-btn" data-category="branding">🏷️ Branding</button>
+      <button class="category-btn" data-category="management">🗂️ Management</button>
+      <button class="category-btn" data-category="career">🧩 Career</button>
+      <button class="category-btn" data-category="ecommerce">🛍️ E-commerce</button>
+
+      <!-- 🧠 SCIENCE -->
+      <button class="category-btn" data-category="science">🔬 Science</button>
+      <button class="category-btn" data-category="space">🪐 Space</button>
+      <button class="category-btn" data-category="biology">🧬 Biology</button>
+      <button class="category-btn" data-category="physics">⚛️ Physics</button>
+      <button class="category-btn" data-category="chemistry">🧪 Chemistry</button>
+      <button class="category-btn" data-category="environment">🌍 Environment</button>
+      <button class="category-btn" data-category="medicine">💊 Medicine</button>
+      <button class="category-btn" data-category="psychology">🧠 Psychology</button>
+      <button class="category-btn" data-category="philosophy">📖 Philosophy</button>
+      <button class="category-btn" data-category="education">📚 Education</button>
+
+      <!-- 🎬 ENTERTAINMENT -->
+      <button class="category-btn" data-category="music">🎵 Music</button>
+      <button class="category-btn" data-category="film">🎬 Film</button>
+      <button class="category-btn" data-category="tv">📺 TV</button>
+      <button class="category-btn" data-category="books">📖 Books</button>
+      <button class="category-btn" data-category="culture">🎭 Culture</button>
+      <button class="category-btn" data-category="events">🎫 Events</button>
+      <button class="category-btn" data-category="trends">🔥 Trends</button>
+
+      <!-- 🌿 LIFESTYLE -->
+      <button class="category-btn" data-category="lifestyle">🌿 Lifestyle</button>
+      <button class="category-btn" data-category="health">💪 Health</button>
+      <button class="category-btn" data-category="fitness">🏋️ Fitness</button>
+      <button class="category-btn" data-category="food">🍽️ Food</button>
+      <button class="category-btn" data-category="travel">✈️ Travel</button>
+      <button class="category-btn" data-category="motivation">🔥 Motivation</button>
+      <button class="category-btn" data-category="selfcare">🧘 Self-care</button>
+      <button class="category-btn" data-category="relationships">💞 Relationships</button>
+      <button class="category-btn" data-category="home">🏠 Home</button>
+
+      <!-- 🌍 GLOBAL & SOCIAL -->
+      <button class="category-btn" data-category="politics">🏛️ Politics</button>
+      <button class="category-btn" data-category="society">🗣️ Society</button>
+      <button class="category-btn" data-category="humanrights">⚖️ Human Rights</button>
+      <button class="category-btn" data-category="sustainability">♻️ Sustainability</button>
+      <button class="category-btn" data-category="aiethics">🧩 AI Ethics</button>
+      <button class="category-btn" data-category="future">🔭 Future</button>
+      <button class="category-btn" data-category="productivity">⏱️ Productivity</button>
+      <button class="category-btn" data-category="mindfulness">🕯️ Mindfulness</button>
+      <button class="category-btn" data-category="sports">⚽ Sports</button>
+    </div>
+  </div>
+</footer>
+
+
+            <div class="blog-grid" id="blogGrid"></div>
+            
+            <div id="emptyState" class="empty-state hidden">
+                <h3>🌙 No posts yet</h3>
+                <p>Be the first to post and bring the community to life!</p>
+                <a href="new_post.html" class="btn btn-primary">✏️ Create the First Post</a>
+            </div>
+        </div>
+    </footer>
+
+    <footer id="about">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>
+    <span class="footer-logo-icon"></span>
+    Blogify
+</h4>
+                    <p style="color: var(--text-secondary); font-size: 14px;">Fresh content from the world of technology and design.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>🔗 Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Privacy</a></li>
+                        <li><a href="#">RSS</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Blogify. All rights reserved. Made with 💜</p>
+            </div>
+        </div>
+    </footer>
+    
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🔐 Login</h2>
+                <p>Sign in to continue to your account</p>
+            </div>
+            <form id="loginForm" onsubmit="event.preventDefault(); login()">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" placeholder="example@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" placeholder="Your password" required>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline" onclick="closeModal('loginModal')">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </div>
+            </form>
+            <div class="switch-modal">
+                Don’t have an account? <a href="#" onclick="switchToRegister(); return false;">Sign Up</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>✨ Sign Up</h2>
+                <p>Create your free account now.</p>
+            </div>
+            <form id="registerForm" onsubmit="event.preventDefault(); register()">
+                <div class="form-group">
+                    <label for="registerName">Full Name</label>
+                    <input type="text" id="registerName" placeholder="Your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail">Email</label>
+                    <input type="email" id="registerEmail" placeholder="example@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Password</label>
+                    <input type="password" id="registerPassword" placeholder="Your password (min. 6 characters)" required>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline" onclick="closeModal('registerModal')">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Sign Up</button>
+                </div>
+            </form>
+            <div class="switch-modal">
+                Already have an account? <a href="#" onclick="switchToLogin(); return false;">Login</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

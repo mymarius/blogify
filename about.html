@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Modern Blog</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #13131a;
+            --bg-card: #1a1a24;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0b8;
+            --accent: #6366f1;
+            --accent-hover: #4f46e5;
+            --border: #2a2a3a;
+            --primary-color: var(--accent);
+            --secondary-color: #8B5CF6;
+            --card-bg: var(--bg-card);
+            --border-color: var(--border);
+        }
+
+        .hero-section {
+            position: relative;
+            padding: 120px 0;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 50%, rgba(99, 102, 241, 0.15), transparent 50%),
+                        radial-gradient(circle at 70% 50%, rgba(139, 92, 246, 0.15), transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.2s backwards;
+        }
+
+        .hero-description {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            animation: fadeInUp 1s ease-out 0.4s backwards;
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 1px solid var(--border-color);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(99, 102, 241, 0.3); 
+            border-color: var(--primary-color);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-title {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-text {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stats-section {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(139, 92, 246, 0.05));
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 15px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 40px rgba(99, 102, 241, 0.2);
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .value-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.2); 
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .value-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .value-text {
+            color: var(--text-secondary);
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: moveGrid 20s linear infinite;
+        }
+
+        @keyframes moveGrid {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .cta-text {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 2rem;
+        }
+
+        .btn-cta {
+            background: white;
+            color: var(--primary-color);
+            padding: 1rem 3rem;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-cta:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            .section-title {
+                font-size: 2.5rem;
+            }
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-section {
+                padding: 80px 0;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo blogify-logo">
+    <span class="blogify-icon"></span>
+    Blogify
+</a>
+                <ul class="nav-links">
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#articles">Articles</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+                <div id="authButtons" class="user-menu">
+                    <button class="btn btn-outline" onclick="openLoginModal()">Login</button>
+                    <button class="btn btn-primary" onclick="openRegisterModal()">Sign Up</button>
+                </div>
+                <div id="userMenu" class="user-menu hidden">
+                    <a href="dashboard.html" class="btn btn-outline">📊 Dashboard</a>
+                    <a href="new_post.html" class="btn btn-primary">✏️ New Post</a>
+                    <div class="user-avatar" id="userAvatar"></div>
+                    <button class="btn btn-outline" onclick="logout()">Logout</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-bg"></div>
+            <div class="container">
+<div class="hero-logo">
+    <div class="hero-logo-icon"></div>
+    <h1 class="hero-logo-text">Blogify</h1>
+</div>
+
+                <div class="hero-content">
+                    <h1 class="hero-title" style="background: none; -webkit-text-fill-color: var(--text-primary); margin-top: 1rem;">
+    Knowledge Sharing & Innovation
+</h1>
+                    <p class="hero-subtitle">A hub for passionately created digital content</p>
+                    <p class="hero-description">
+                        We provide in-depth guides, up-to-date analyses, and inspiring stories on software, design, technology, and creativity. Our mission is to guide readers through the ever-evolving digital world and empower their journey forward.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Why We Exist</h2>
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h3 class="card-title">Our Mission</h3>
+                        <p class="card-text">
+                            To simplify technological and creative knowledge and deliver high-quality, accurate, and original content that contributes to the growth of readers at every level. We believe learning should be accessible to everyone.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3 class="card-title">Our Vision</h3>
+                        <p class="card-text">
+                            To become the first reference point for technology and design enthusiasts worldwide. By accelerating knowledge flow and empowering communities, we aim to help shape the digital future.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section stats-section">
+            <div class="container">
+                <h2 class="section-title">By the Numbers</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">10K+</div>
+                        <div class="stat-label">Monthly Readers</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Published Articles</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">2025</div>
+                        <div class="stat-label">Founded</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">4.9/5</div>
+                        <div class="stat-label">Reader Satisfaction</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Our Content Philosophy</h2>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <div class="value-icon">💡</div>
+                        <h4 class="value-title">Originality</h4>
+                        <p class="value-text">All our articles are 100% original, researched, and tested.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">🔍</div>
+                        <h4 class="value-title">Depth</h4>
+                        <p class="value-text">We go beyond the surface and explore every detail of each topic.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">🌐</div>
+                        <h4 class="value-title">Transparency</h4>
+                        <p class="value-text">We openly share all our sources and information.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">🤝</div>
+                        <h4 class="value-title">Community</h4>
+                        <p class="value-text">Reader contributions and feedback are our top priority.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-content">
+                    <h2 class="cta-title">Let’s Connect!</h2>
+                    <p class="cta-text">
+                        Don’t hesitate to reach out for feedback, collaborations, or questions.
+                    </p>
+                    <a href="#" class="btn btn-cta">Contact Us</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>
+    <span class="footer-logo-icon"></span>
+    Blogify
+</h4>
+                    <p style="color: var(--text-secondary);">Fresh content from the world of technology and design.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>🔗 Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Privacy</a></li>
+                        <li><a href="#">RSS</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Blogify. All rights reserved. Made with 💜</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

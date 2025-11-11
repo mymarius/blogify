@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="postPageTitle">Post Detail | Blogify</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo blogify-logo">
+    <span class="blogify-icon"></span>
+    Blogify
+</a>
+                <ul class="nav-links">
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#articles">Posts</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+                <div id="authButtons" class="user-menu">
+                    <button class="btn btn-outline" onclick="openLoginModal()">Login</button>
+                    <button class="btn btn-primary" onclick="openRegisterModal()">Register</button>
+                </div>
+                <div id="userMenu" class="user-menu hidden">
+                    <a href="dashboard.html" class="btn btn-outline">📊 Dashboard</a>
+                    <a href="new_post.html" class="btn btn-primary">✏️ New Post</a>
+                    <div class="user-avatar" id="userAvatar"></div>
+                    <button class="btn btn-outline" onclick="logout()">Logout</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="post-detail-page" style="padding: 60px 0;">
+            <div class="container">
+                <div id="postDetailContainer">
+                    <div style="text-align: center; padding: 50px;">
+                        <h2 style="color: var(--accent);">Loading...</h2>
+                        <p style="color: var(--text-secondary);">If the post doesn’t load, please return to the homepage.</p>
+                        <a href="index.html" class="btn btn-outline" style="margin-top: 20px;">Go Home</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer id="about">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>
+    <span class="footer-logo-icon"></span>
+    Blogify
+</h4>
+                    <p style="color: var(--text-secondary); font-size: 14px;">Fresh insights from the world of technology and design.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>🔗 Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Privacy</a></li>
+                        <li><a href="#">RSS</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Blogify. All rights reserved. Made with 💜</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Login</h2>
+                <p>Join the community and start sharing.</p>
+            </div>
+            <form id="loginForm" onsubmit="event.preventDefault(); login()">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline" onclick="closeModal('loginModal')">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </div>
+            </form>
+            <div class="switch-modal">
+                Don’t have an account? <a href="#" onclick="switchToRegister(); return false;">Register</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal" id="registerModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Register</h2>
+                <p>Create a free account instantly.</p>
+            </div>
+            <form id="registerForm" onsubmit="event.preventDefault(); register()">
+                <div class="form-group">
+                    <label for="registerName">Full Name</label>
+                    <input type="text" id="registerName" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail">Email</label>
+                    <input type="email" id="registerEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Password (min. 6 characters)</label>
+                    <input type="password" id="registerPassword" required>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline" onclick="closeModal('registerModal')">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </div>
+            </form>
+            <div class="switch-modal">
+                Already have an account? <a href="#" onclick="switchToLogin(); return false;">Login</a>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

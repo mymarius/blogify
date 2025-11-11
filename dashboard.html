@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo blogify-logo">
+    <span class="blogify-icon"></span>
+    Blogify
+</a>
+                <ul class="nav-links">
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#articles">Articles</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                </ul>
+                <div id="authButtons" class="user-menu hidden">
+                    <button class="btn btn-outline" onclick="openLoginModal()">Login</button>
+                    <button class="btn btn-primary" onclick="openRegisterModal()">Sign Up</button>
+                </div>
+                <div id="userMenu" class="user-menu hidden">
+                    <a href="dashboard.html" class="btn btn-outline">📊 Dashboard</a>
+                    <a href="new_post.html" class="btn btn-primary">✏️ New Post</a>
+                    <div class="user-avatar" id="userAvatar"></div>
+                    <button class="btn btn-outline" onclick="logout()">Logout</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container dashboard-container">
+            <h1>📊 User Dashboard</h1>
+            
+            <div class="dashboard-stats-grid">
+                <div class="stat-card">
+                    <h3>Total Posts</h3>
+                    <p id="totalPosts" class="stat-number">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Total Likes</h3>
+                    <p id="totalLikes" class="stat-number">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Total Comments</h3>
+                    <p id="totalComments" class="stat-number">0</p>
+                </div>
+            </div>
+
+            <div class="dashboard-content-grid">
+                <div class="profile-edit-card">
+                    <h2>👤 Profile Information</h2>
+                    <div id="currentProfilePicture" class="profile-avatar-display"></div>
+                    
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" id="profileName" placeholder="Your full name">
+                    </div>
+                    <div class="form-group">
+                        <label>Email (Not Editable)</label>
+                        <input type="email" id="profileEmail" disabled>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Upload Profile Picture (New)</label>
+                        <input type="file" id="profilePictureFile" accept="image/png, image/jpeg">
+                        <small style="color:var(--text-secondary);">Select a file to change your current picture.</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label>New Password (Leave empty to keep current)</label>
+                        <input type="password" id="profilePassword" placeholder="••••••••">
+                    </div>
+
+                    <button class="btn btn-primary" onclick="saveProfile()">Save</button>
+                    <button class="btn btn-outline" style="margin-top: 15px; color: var(--danger); border-color: var(--danger);" onclick="clearAllData()">🚨 Delete All Blog Data</button>
+                </div>
+
+                <div class="my-posts-card">
+                    <div class="my-posts-header">
+                        <h2>📝 My Posts</h2>
+                        <a href="new_post.html" class="btn btn-primary btn-sm">New Post</a>
+                    </div>
+                    
+                    <div id="myPostsList" class="my-posts-list">
+                        <p class="placeholder-text">Loading your posts...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer id="about">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>
+    <span class="footer-logo-icon"></span>
+    Blogify
+</h4>
+                    <p style="color: var(--text-secondary); font-size: 14px;">Fresh content from the world of technology and design.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>🔗 Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Privacy</a></li>
+                        <li><a href="#">RSS</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Blogify. All rights reserved. Made with 💜</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
